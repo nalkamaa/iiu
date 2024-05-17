@@ -15,7 +15,7 @@
             background: #dbb138; /* Set background color to yellow */
         }
         .widget-container {
-            background-color: rgba(219, 177, 56, 0.8); /* Semi-transparent dbb138 background */
+            background-color: rgba(219, 177, 56, 0.5); /* More transparent dbb138 background */
             padding: 20px; /* Padding inside the box */
             border-radius: 8px; /* Rounded corners */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -31,7 +31,7 @@
 </head>
 <body>
     <!-- Div element for the widget -->
-    <div class="widget-container" data-pesistulokset="ottelut" 
+    <div id="widget" class="widget-container" data-pesistulokset="ottelut" 
          data-ajankohta="pelatut" 
          data-joukkue="12793" 
          data-koti-vieras="kaikki" 
@@ -41,5 +41,22 @@
     
     <!-- Script to load the widget -->
     <script async defer type="text/javascript" src="https://www.pesistulokset.fi/js/widgets.js?v=1.04"></script>
+    
+    <!-- Script to refresh the widget content every 30 seconds -->
+    <script>
+        function refreshWidget() {
+            var widget = document.getElementById('widget');
+            var clone = widget.cloneNode(true);
+            widget.parentNode.replaceChild(clone, widget);
+            var script = document.createElement('script');
+            script.async = true;
+            script.defer = true;
+            script.type = 'text/javascript';
+            script.src = "https://www.pesistulokset.fi/js/widgets.js?v=1.04";
+            document.body.appendChild(script);
+        }
+
+        setInterval(refreshWidget, 30000); // Refresh every 30 seconds
+    </script>
 </body>
 </html>
