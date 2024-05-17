@@ -6,15 +6,24 @@
     <title>Iin Urheilijat</title>
     <style>
         body {
-            background-color: white; /* Set background color to white */
+            background-color: #f0f0f0; /* Optional: light gray background for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+        }
+        .widget-container {
+            background-color: white; /* White background for the box */
+            padding: 20px; /* Padding inside the box */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
     </style>
 </head>
 <body>
     <!-- Div element for the widget -->
-    <div data-pesistulokset="ottelut" 
+    <div class="widget-container" data-pesistulokset="ottelut" 
          data-ajankohta="pelatut" 
          data-joukkue="12793" 
          data-koti-vieras="kaikki" 
