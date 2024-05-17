@@ -42,7 +42,7 @@
     <!-- Script to load the widget -->
     <script async defer type="text/javascript" src="https://www.pesistulokset.fi/js/widgets.js?v=1.04"></script>
     
-    <!-- Script to refresh the widget content every 30 seconds -->
+    <!-- Script to refresh the widget content every 30 seconds and hide day and time -->
     <script>
         function refreshWidget() {
             var widget = document.getElementById('widget');
@@ -56,7 +56,21 @@
             document.body.appendChild(script);
         }
 
-        setInterval(refreshWidget, 30000); // Refresh every 30 seconds
+        function removeDayAndTime() {
+            var widget = document.getElementById('widget');
+            var elements = widget.querySelectorAll('.day-time-class'); // Update the selector to match the actual class or element containing day and time
+            elements.forEach(function(element) {
+                element.style.display = 'none';
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setInterval(function() {
+                refreshWidget();
+                setTimeout(removeDayAndTime, 1000); // Adjust timeout as needed to ensure the widget has fully loaded
+            }, 30000);
+            setTimeout(removeDayAndTime, 1000); // Initial call to remove day and time
+        });
     </script>
 </body>
 </html>
