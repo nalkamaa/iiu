@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iin Urheilijat</title>
     <style>
-        html, body {
-            height: 100%; /* Ensure the body takes full height */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+        body {
+            background-color: #f0f0f0; /* Light gray background for contrast */
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* Ensure the background is transparent */
+            height: 100vh;
+            margin: 0; /* Remove default margin */
         }
         .widget-container {
             background-color: rgba(219, 177, 56, 0.8); /* Semi-transparent dbb138 background */
@@ -24,6 +23,7 @@
             flex-wrap: nowrap; /* Prevent wrapping to the next line */
             overflow-x: auto; /* Allow horizontal scrolling if content overflows */
             max-width: 90%; /* Limit the width to 90% of the viewport */
+            height: auto; /* Auto height */
             align-items: center; /* Center content vertically */
         }
     </style>
