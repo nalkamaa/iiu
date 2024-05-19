@@ -32,17 +32,17 @@
 <body>
     <!-- Div element for the widget -->
     <div id="widget" class="widget-container" data-pesistulokset="ottelut" 
-         data-ajankohta="tanaan" 
-         data-joukkue="kaikki" 
+         data-ajankohta="pelatut" 
+         data-joukkue="12793" 
          data-koti-vieras="kaikki" 
          data-rajaa="10" 
          data-stadion="false" 
-         data-lohko="2891"></div>
+         data-lohko="2886"></div>
     
     <!-- Script to load the widget -->
     <script async defer type="text/javascript" src="https://www.pesistulokset.fi/js/widgets.js?v=1.04"></script>
     
-    <!-- Script to refresh the widget content every 30 seconds and hide day and time -->
+    <!-- Script to refresh the widget content every 45 seconds -->
     <script>
         function refreshWidget() {
             var widget = document.getElementById('widget');
@@ -56,20 +56,8 @@
             document.body.appendChild(script);
         }
 
-        function removeDayAndTime() {
-            var widget = document.getElementById('widget');
-            var elements = widget.querySelectorAll('.day-time-class'); // Update the selector to match the actual class or element containing day and time
-            elements.forEach(function(element) {
-                element.style.display = 'none';
-            });
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
-            setInterval(function() {
-                refreshWidget();
-                setTimeout(removeDayAndTime, 1000); // Adjust timeout as needed to ensure the widget has fully loaded
-            }, 45000);
-            setTimeout(removeDayAndTime, 1000); // Initial call to remove day and time
+            setInterval(refreshWidget, 45000); // Refresh every 45 seconds
         });
     </script>
 </body>
