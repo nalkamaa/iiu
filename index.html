@@ -19,57 +19,45 @@
             padding: 20px; /* Padding inside the box */
             border-radius: 8px; /* Rounded corners */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            display: flex; /* Flexbox layout */
-            flex-direction: row; /* Ensure content is in a single row */
-            flex-wrap: nowrap; /* Prevent wrapping to the next line */
-            overflow-x: auto; /* Allow horizontal scrolling if content overflows */
             max-width: 90%; /* Limit the width to 90% of the viewport */
             height: auto; /* Auto height */
-            align-items: center; /* Center content vertically */
         }
     </style>
 </head>
 <body>
     <!-- Div element for the widget -->
-    <div id="widget" class="widget-container" data-pesistulokset="ottelut" 
-         data-ajankohta="tanaan" 
-         data-joukkue="12793" 
-         data-koti-vieras="kaikki" 
-         data-rajaa="1" 
-         data-stadion="false" 
-         data-lohko="2886"></div>
+    <div id="pesistulokset-next-home-match" class="widget-container"
+         data-api-key="3s0Uuz7ihVQYnOOQ4ROve8SJaCsX91nj"
+         data-type="match"
+         data-match-type="previous"
+         data-season="2024"
+         data-series="Naiset"
+         data-level="Talvisuper"
+         data-phase="Alkulohkot"
+         data-group="Lohko A"
+         data-team="12497"
+         data-show-links="true"></div>
     
     <!-- Script to load the widget -->
-    <script async defer type="text/javascript" src="https://www.pesistulokset.fi/js/widgets.js?v=1.04"></script>
+    <script async defer type="text/javascript" src="https://nalkamaa.github.io/iiu/test/pesistulokset-0.1.0.js"></script>
     
-    <!-- Script to refresh the widget content every 30 seconds and hide day and time -->
+    <!-- Script to refresh the widget content every 45 seconds -->
     <script>
         function refreshWidget() {
-            var widget = document.getElementById('widget');
+            var widget = document.getElementById('pesistulokset-next-home-match');
             var clone = widget.cloneNode(true);
             widget.parentNode.replaceChild(clone, widget);
             var script = document.createElement('script');
             script.async = true;
             script.defer = true;
             script.type = 'text/javascript';
-            script.src = "https://www.pesistulokset.fi/js/widgets.js?v=1.04";
+            script.src = "https://nalkamaa.github.io/iiu/test/pesistulokset-0.1.0.js";
             document.body.appendChild(script);
         }
 
-        function removeDayAndTime() {
-            var widget = document.getElementById('widget');
-            var elements = widget.querySelectorAll('.day-time-class'); // Update the selector to match the actual class or element containing day and time
-            elements.forEach(function(element) {
-                element.style.display = 'none';
-            });
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
-            setInterval(function() {
-                refreshWidget();
-                setTimeout(removeDayAndTime, 1000); // Adjust timeout as needed to ensure the widget has fully loaded
-            }, 45000);
-            setTimeout(removeDayAndTime, 1000); // Initial call to remove day and time
+            refreshWidget(); // Initial load
+            setInterval(refreshWidget, 45000); // Refresh every 45 seconds
         });
     </script>
 </body>
