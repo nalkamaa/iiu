@@ -6,26 +6,25 @@
     <title>Iin Urheilijat</title>
     <style>
         html, body {
-            height: 100%; /* Ensure the body takes full height */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            height: 100%;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* Set background color to transparent */
+            background: transparent;
         }
         .widget-container {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 20px; /* Padding inside the box */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            max-width: 90%; /* Limit the width to 90% of the viewport */
-            height: auto; /* Auto height */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <!-- Div element for the widget -->
     <div id="pesistulokset-next-home-match" class="widget-container"
          data-api-key="3s0Uuz7ihVQYnOOQ4ROve8SJaCsX91nj"
          data-type="match"
@@ -35,11 +34,11 @@
          data-level="Talvisuper"
          data-phase="Alkulohkot"
          data-group="Lohko A"
-         data-team="12497"
+         data-team="88"
          data-show-links="true"></div>
     
     <!-- Script to load the widget -->
-    <script async defer type="text/javascript" src="https://nalkamaa.github.io/iiu/pesistulokset-0.1.0.js"></script>
+    <script type="module" src="https://username.github.io/repository/pesistulokset-0.1.0.js"></script>
     
     <!-- Script to refresh the widget content every 45 seconds -->
     <script>
@@ -48,10 +47,8 @@
             var clone = widget.cloneNode(true);
             widget.parentNode.replaceChild(clone, widget);
             var script = document.createElement('script');
-            script.async = true;
-            script.defer = true;
-            script.type = 'text/javascript';
-            script.src = "https://nalkamaa.github.io/iiu/pesistulokset-0.1.0.js";
+            script.type = 'module';
+            script.src = "https://username.github.io/repository/pesistulokset-0.1.0.js";
             document.body.appendChild(script);
         }
 
