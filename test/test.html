@@ -83,6 +83,12 @@
     .team {
         font-weight: bold;
     }
+
+    /* Style for horizontal line */
+    .separator {
+        border-top: 1px solid #ddd;
+        margin: 10px 0;
+    }
 </style>
 </head>
 <body>
@@ -154,8 +160,9 @@
         // Creating the summarized content
         const summary = `
             <p class="${boldRow2} result"><span class="label">1. jakso</span><span class="score">${inning1Result}</span></p>
+            <div class="separator"></div>
             <p class="${boldRow3} result"><span class="label">2. jakso</span><span class="score">${inning2Result}</span></p>
-            ${thirdInningContainsNumbers ? `<p class="bold result"><span class="label">Supervuoro</span><span class="score">${thirdInningResult}</span></p>` : ''}
+            ${thirdInningContainsNumbers ? `<div class="separator"></div><p class="bold result"><span class="label">Supervuoro</span><span class="score">${thirdInningResult}</span></p>` : ''}
         `;
 
         // Inserting the content into the widget
