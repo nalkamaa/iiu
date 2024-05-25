@@ -26,13 +26,13 @@
         font-size: 16px;
     }
 
-    #live-match-widget-header {
+    #live-match-widget-subheader {
         background-color: #0d47a1;
         color: #fff;
         padding: 15px;
         text-align: center;
         font-weight: bold;
-        font-size: 1.4em; /* Increased font size for the header */
+        font-size: 1.4em; /* Increased font size for the subheader */
     }
 
     #live-match-widget-content {
@@ -58,17 +58,10 @@
         font-size: 1.1em;
     }
 
-    /* Increase font size for the first row */
-    #live-match-widget p:first-child {
-        font-size: 1.3em;
-        text-align: center;
-        color: #0d47a1;
-    }
-
     .result {
         display: flex;
         justify-content: space-between;
-        align-items: left; /* Center-align items vertically */
+        align-items: center; /* Center-align items vertically */
         text-align: left; /* Ensure left-alignment of text */
     }
 
@@ -83,19 +76,19 @@
 
     .score {
         flex: 1;
-        text-align: left;
+        text-align: right;
         font-weight: bold;
     }
 
-    .team
+    .team {
         font-weight: bold;
     }
 </style>
 </head>
 <body>
 <div id="live-match-widget">
-    <div id="live-match-widget-header">
-        IiU pesäpallo
+    <div id="live-match-widget-subheader">
+        <!-- Subheader content will be inserted here by JavaScript -->
     </div>
     <div id="live-match-widget-content">
         <!-- Content will be inserted here by JavaScript -->
@@ -139,12 +132,11 @@
         }
 
         // Determine bold classes based on the conditions
-        let boldRow1 = '';
         let boldRow2 = '';
         let boldRow3 = '';
 
         if (finished) {
-            boldRow1 = 'bold';
+            document.getElementById('live-match-widget-subheader').classList.add('bold');
         } else if (thirdInningContainsNumbers) {
             boldRow3 = 'bold';
             boldRow2 = '';
@@ -156,15 +148,18 @@
             boldRow3 = '';
         }
 
+        // Creating the subheader content
+        const subheaderContent = `<span class="team">${homeTeam.toUpperCase()} ${periods.home}</span> - <span class="team">${periods.away} ${awayTeam.toUpperCase()}</span>`;
+
         // Creating the summarized content
         const summary = `
-            <p class="${boldRow1}"><span class="team">${homeTeam.toUpperCase()} ${periods.home}</span> - <span class="team">${periods.away} ${awayTeam.toUpperCase()}</span></p>
             <p class="${boldRow2} result"><span class="label">1. jakso</span><span class="score">${inning1Result}</span></p>
             <p class="${boldRow3} result"><span class="label">2. jakso</span><span class="score">${inning2Result}</span></p>
             ${thirdInningContainsNumbers ? `<p class="bold result"><span class="label">Supervuoro</span><span class="score">${thirdInningResult}</span></p>` : ''}
         `;
 
         // Inserting the content into the widget
+        document.getElementById('live-match-widget-subheader').innerHTML = subheaderContent;
         document.getElementById('live-match-widget-content').innerHTML = summary;
     }
 
