@@ -76,7 +76,7 @@
 
     .score {
         flex: 1;
-        text-align: left;
+        text-align: right;
         font-weight: bold;
     }
 
@@ -163,7 +163,9 @@
         document.getElementById('live-match-widget-content').innerHTML = summary;
     }
 
+    // Fetch match result immediately and then every 45 seconds
     fetchMatchResult();
+    setInterval(fetchMatchResult, 45000);
 </script>
 </body>
 </html>
